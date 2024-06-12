@@ -1,0 +1,4 @@
+Set-based ----- label requirements allow filtering keys according to a set of values. Three kinds of operators are supported: in,notin and exists
+
+
+Equality------allow filtering by label keys and values. Matching objects must satisfy all of the specified label constraints, though they may have additional labels as well. Three kinds of operators are admitted =,==,!=
