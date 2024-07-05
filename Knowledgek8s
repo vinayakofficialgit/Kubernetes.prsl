@@ -2,3 +2,8 @@ Set-based ----- label requirements allow filtering keys according to a set of va
 
 
 Equality------allow filtering by label keys and values. Matching objects must satisfy all of the specified label constraints, though they may have additional labels as well. Three kinds of operators are admitted =,==,!=
+
+
+Liveness probe : Determine if a container is running  properly. if liveness probe fails  kubernetes will restart the container.
+
+Readiness Probe  :  Check if container is ready to handle requests.if readiness probe fails k8s stops sending traffic to containers
