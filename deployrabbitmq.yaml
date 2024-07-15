@@ -1,0 +1,72 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name:  podautoscaleimplemented
+rules:
+  - apiGroups: ["*"]
+    resources: ["deployments", "deployments/scale"]
+    verbs: ["get", "list", "update"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name:  podautoscaleimplemented
+  namespace: rabbitmqns
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name:  podautoscaleimplemented
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name:  podautoscaleimplemented
+subjects:
+  - kind: ServiceAccount
+    name:  podautoscaleimplemented
+    namespace: rabbitmqns
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  podautoscaleimplemented
+  namespace: rabbitmqns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  podautoscaleimplemented
+  template:
+    metadata:
+      labels:
+        app:  podautoscaleimplemented
+    spec:
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+      serviceAccountName:  podautoscaleimplemented
+      containers:
+        - name:  podautoscaleimplemented
+          image: dockerdotvinayak/kalaspuffarabbitmq-hpa
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 100m
+              memory: 50Mi
+          env:
+            - name: INTERVAL
+              value: "30"
+            - name: RABBIT_HOST
+              value: "http://10.244.1.102"
+            - name: RABBIT_USER
+              value: "user"
+            - name: RABBIT_PASS
+              value: "PASSWORD@123"
+            - name: AUTOSCALING
+              value: >
+                1|5|5|rabbitmqns|php-apache|newvalue-queue;
+            - name: LOGS
+              value: HIGH
+            - name: SLACK_HOOK
+              value: ''
