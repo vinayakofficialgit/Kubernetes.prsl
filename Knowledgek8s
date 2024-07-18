@@ -7,3 +7,5 @@ Equality------allow filtering by label keys and values. Matching objects must sa
 Liveness probe : Determine if a container is running  properly. if liveness probe fails  kubernetes will restart the container.
 
 Readiness Probe  :  Check if container is ready to handle requests.if readiness probe fails k8s stops sending traffic to containers
+
+kubectl exec podname  -- touch /home/file1    ---- to create file in pods directly
