@@ -9,3 +9,18 @@ Liveness probe : Determine if a container is running  properly. if liveness prob
 Readiness Probe  :  Check if container is ready to handle requests.if readiness probe fails k8s stops sending traffic to containers
 
 kubectl exec podname  -- touch /home/file1    ---- to create file in pods directly
+
+
+###to make alias
+1.swithched to root user
+paste on terminal   #sudo kubectl completion bash > /etc/bash_completion.d/kubectl
+
+2.now go to
+vim ./.bashrc
+paste this at the end of all line....
+
+source /usr/share/bash-completion/bash_completion
+source /etc/bash_completion
+source <(kubectl completion bash)
+alias k=kubectl
+complete -F __start_kubectl k
