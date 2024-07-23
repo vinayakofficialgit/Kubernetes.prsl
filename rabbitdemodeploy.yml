@@ -1,0 +1,102 @@
+
+###with secret.yaml
+
+
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRole
+metadata:
+  name: kub-autoscaling-example
+rules:
+  - apiGroups: ["*"]
+    resources: ["deployments", "deployments/scale"]
+    verbs: ["get", "list", "update"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kub-autoscaling-example
+  namespace: rabbitmqns
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRoleBinding
+metadata:
+  name: kub-autoscaling-example
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kub-autoscaling-example
+subjects:
+  - kind: ServiceAccount
+    name: kub-autoscaling-example
+    namespace: rabbitmqns
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kub-autoscaling-example
+  namespace: rabbitmqns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kub-autoscaling-example
+  template:
+    metadata:
+      labels:
+        app: kub-autoscaling-example
+    spec:
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+      serviceAccountName: kub-autoscaling-example
+      containers:
+        - name: kub-autoscaling-example
+          image: dockerdotvinayak/vinrabbitmq-hpa-1
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 100m
+              memory: 50Mi
+          env:
+            - name: INTERVAL
+              value: "30"
+            - name: RABBIT_HOST
+              value: "http://10.244.2.57"
+              
+            - name: RABBIT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: kub-autoscaling-example
+                  key: username
+   
+
+
+            - name: RABBIT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: kub-autoscaling-example
+                  key: password
+
+            - name: AUTOSCALING
+              value: >
+                1|5|5|default|php-apache|myqueue;
+            - name: LOGS 
+              value: HIGH
+            - name: SLACK_HOOK
+              value: '' 
+
+
+
+
+
+
+
+ apiVersion: v1
+kind: Secret
+metadata:
+  name: kub-autoscaling-example
+type: kubernetes.io/basic-auth
+stringData:
+  username: user
+  password: PASSWORD@123             
