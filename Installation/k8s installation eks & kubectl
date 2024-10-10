@@ -70,8 +70,9 @@ AmazonEKSWorkerNodePolicy
 AWSCloudFormationFullAccess
 
 #######################################################################
+##optionlly 
 snap install aws-cli  --classic
-
+aws configure
 
 
 
