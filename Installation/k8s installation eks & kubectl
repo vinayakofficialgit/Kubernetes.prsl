@@ -53,7 +53,21 @@ mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator
 echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
 
 
+###########################################################################################
 
+you can create iam role
+aws service ---->ec2---->add permission
+AmazonEC2FullAccess
+
+AmazonEKS_CNI_Policy
+
+AmazonEKSClusterPolicy
+
+AmazonEKSServicePolicy
+
+AmazonEKSWorkerNodePolicy
+
+AWSCloudFormationFullAccess
 
 
 
