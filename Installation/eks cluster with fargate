@@ -1,9 +1,19 @@
 
 
-eksctl create cluster --name demo-cluster --region us-east-1 --fargate    ###just to put --fargate 
+eksctl create cluster --name demo-cluster --region us-east-1 --fargate       ###just to put --fargate 
+
+eksctl create fargateprofile \                                               ####to create another fargate profile to deploy pod desired namespace instead of Default or kubesystem namespace
+    --cluster demo-cluster \
+    --region us-east-1 \
+    --name alb-sample-app \
+    --namespace vnamespace
 
 
 
+
+
+
+NOTES
 info about eks fargate
 AWS Fargate on eks considerations:
 
