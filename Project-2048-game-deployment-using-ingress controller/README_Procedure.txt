@@ -113,11 +113,11 @@ aws iam create-policy \
     
     
 eksctl create iamserviceaccount \
-  --cluster=vin-cluster \
+  --cluster=vin-cluster \                                     # give clustername 
   --namespace=kube-system \
   --name=aws-load-balancer-controller \
   --role-name AmazonEKSLoadBalancerControllerRole \
-  --attach-policy-arn=arn:aws:iam::339712801272:policy/AWSLoadBalancerControllerIAMPolicy \
+  --attach-policy-arn=arn:aws:iam::339712801272:policy/AWSLoadBalancerControllerIAMPolicy \        ##only change the aws account no.
   --approve
     
     
@@ -130,10 +130,10 @@ eksctl create iamserviceaccount \
  
  ####install ALB controller via helm
  helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system \
-  --set clusterName=vin-cluster \
+  --set clusterName=vin-cluster \                                             # give clustername 
   --set serviceAccount.create=false \
   --set serviceAccount.name=aws-load-balancer-controller \
   --set region=us-east-1 \
-  --set vpcId=vpc-0305157c51cf258ed
+  --set vpcId=vpc-0305157c51cf258ed                                ###give vpc id
 
 
