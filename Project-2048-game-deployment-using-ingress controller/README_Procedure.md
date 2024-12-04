@@ -96,8 +96,11 @@ eksctl utils associate-iam-oidc-provider --cluster vin-cluster  --approve       
 
 
 curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json    ####to give permission to pods from accessing aws services such as ALB ec2 
+
+copy all the content from the filename  aws-iam-policy   to below file
 vim  iam_policy.json
-copy all the 
+
+
 
 
 aws iam create-policy \
