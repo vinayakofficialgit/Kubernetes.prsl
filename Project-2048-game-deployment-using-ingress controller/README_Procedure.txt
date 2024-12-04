@@ -137,3 +137,8 @@ eksctl create iamserviceaccount \
   --set vpcId=vpc-0305157c51cf258ed                                ###give vpc id
 
 
+
+kubectl get ingress -n namespace     
+
+now check LB in both aws console as well as in terminal and paste in chrome
+
