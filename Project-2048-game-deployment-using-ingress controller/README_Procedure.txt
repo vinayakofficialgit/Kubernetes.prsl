@@ -1,3 +1,6 @@
+Project link: https://github.com/iam-veeramalla/aws-devops-zero-to-hero/tree/main/day-22
+
+
 eksctl create cluster --name vin-cluster --region us-east-1 --fargate
 
  
