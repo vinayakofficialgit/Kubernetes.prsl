@@ -60,7 +60,7 @@ eksctl create iamserviceaccount --cluster=3tiercluster \
   
   
   
-  #####create an IAM service account for the EBS CSI Controller in an Amazon EKS cluster. The Elastic Block Store (EBS) CSI Controller requires specific AWS permissions to provision and manage EBS volumes.
+  #####create an IAM service account for the EBS CSI Controller in an Amazon EKS cluster. The Elastic Block Store (EBS) CSI Controller ####requires specific AWS permissions to provision and manage EBS volumes. Container storage Interface(CSI)  A plugin that allows Kubernetes ###to interact with different storage backends, such as AWS EBS, Google Cloud Persistent Disks. CSI Controller: Manages the lifecycle of #####storage resources (such as volumes)
   
   
   eksctl create iamserviceaccount \
