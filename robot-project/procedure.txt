@@ -85,11 +85,14 @@ eksctl create iamserviceaccount --cluster=3tiercluster \
   helm install robot-shop --namespace robot-shop .
   
   kubectl get pod -n robot-shop 
+#####Wait until all pods running
   kubectl get svc -n robot-shop
 
   kubectl get all -n robot-shop
 
   ##then create ingress resources it is present in eks/helm folder
+
+
   kubectl apply -f ingress.yaml
   
   kubectl get ingress -n robot-shop
