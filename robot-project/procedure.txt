@@ -75,7 +75,7 @@ eksctl create iamserviceaccount --cluster=3tiercluster \
   
   
   
-  eksctl create addon --name aws-ebs-csi-driver --cluster <clustername>--service-account-role-arn arn:aws:iam::<YourAWS-account>:role/AmazonEKS_EBS_CSI_DriverRole --force
+  eksctl create addon --name aws-ebs-csi-driver --cluster <clustername> --service-account-role-arn arn:aws:iam::<YourAWS-account>:role/AmazonEKS_EBS_CSI_DriverRole --force
 
   git clone https://github.com/iam-veeramalla/three-tier-architecture-demo.git
   
