@@ -4,3 +4,5 @@ kubectl get pod -n argocd
 
 ##only above is required to install argoCD but for reference here is
 https://argo-cd.readthedocs.io/en/stable/getting_started/
+
+kubectl edit secret argocd-initial-admin-secret -n argocd        ###to see the argocd pass and decode with echo
