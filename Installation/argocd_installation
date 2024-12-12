@@ -34,3 +34,8 @@ spec:
 syncPolicy:
   syncOption:
   - CreateNamespace=true
+#####bydefault autosync or automatic deployment to k8s cluster is not provided bydefault  but if want to auto sync or auto deploy as soon as github as changes follow below
+  automated:
+    selfHeal: true
+######if we deleted the svc as we dont required so argocd delete all resources automatically follow below
+    prune: true
