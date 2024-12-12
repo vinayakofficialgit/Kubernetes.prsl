@@ -30,3 +30,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: guestbook
+####additional parameter which will create namespace if doesnot exist above guestbook
+syncPolicy:
+  syncOption:
+  - CreateNamespace=true
