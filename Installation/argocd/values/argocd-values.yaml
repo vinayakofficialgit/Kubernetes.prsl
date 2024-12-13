@@ -1,0 +1,8 @@
+---
+global:
+  image:
+    tag: "v2.6.6"
+
+server:
+  extraArgs:
+    - --insecure      ####Not enforcing HTTPS (allowing HTTP connections). and  Not verifying SSL/TLS certificates.

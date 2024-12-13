@@ -1,0 +1,11 @@
+#####for minikube and not for eks for eks you have to configure provider.tf comment one
+
+terraform init
+terraform plan 
+terraform apply 
+
+k get secret argocd-initial-admin-secret
+k get secret argocd-initial-admin-secret -n argocd -o yaml
+echo "Ymc2cGhpdElKU1NpTGZZdg==" | base64 -d
+kubectl get svc -n argocd
+k port-forward svc/argocd-server -n argocd 7896:443
