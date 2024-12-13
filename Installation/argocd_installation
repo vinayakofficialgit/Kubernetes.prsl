@@ -7,6 +7,12 @@ https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 kubectl edit secret argocd-initial-admin-secret -n argocd        ###to see the argocd pass and decode with echo
 
+k get secret argocd-initial-admin-secret
+k get secret argocd-initial-admin-secret -n argocd -o yaml
+echo "Ymc2cGhpdElKU1NpTGZZdg==" | base64 -d
+kubectl get svc -n argocd
+k port-forward svc/argocd-server -n argocd 7896:443
+
 
 
 
