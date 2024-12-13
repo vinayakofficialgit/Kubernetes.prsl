@@ -5,4 +5,5 @@ https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinar
 
 command
 ##it will run k8s node as docker container
- minikube start --kubernetes-version=v1.30  --driver=docker    
+ minikube start --kubernetes-version=v1.30  --driver=docker
+ k describe   node minikube | less
