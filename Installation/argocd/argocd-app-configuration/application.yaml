@@ -3,16 +3,14 @@ kind: Application
 metadata:
   name: my-app-foo
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/vinayakofficialgit/Kubernetes.prsl.git/
+    repoURL: https://github.com/vinayakofficialgit/Kubernetes.prsl.git
     targetRevision: HEAD
-    path: environments/staging/my-app
+    path: Installation/argocd/infra-terraform/nginx-app            ###give the path where you have deployment,svc etc
   destination:
-    server: https://kubernetes.default.svc
+    server: https://kubernetes.default.svc     
   syncPolicy:
     automated:
       prune: true
