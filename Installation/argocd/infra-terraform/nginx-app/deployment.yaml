@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: dockerdotvinayak/nginx:0.0.2
+        image: dockerdotvinayak/nginx:0.0.3
         ports:
         - containerPort: 80

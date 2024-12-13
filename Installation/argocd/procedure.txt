@@ -17,3 +17,7 @@ and dont apply directly push  to git
 
 then create argocd-app configure to look for deployment in folder of   Installation/argocd/argocd-app-configuration
 
+ k apply -f application.yaml 
+
+ then docker tag the image:version like 0.0.1  and push
+ and then 0.0.2
