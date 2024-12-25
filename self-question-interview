@@ -1,0 +1,6 @@
+what is dns resolver in route 53?
+how can i deploy app on k8s cluster using jenkins,clear doubt of installing k8s on jenkins server or vice versa? what is best practices?
+how can you communicate the aws secret manager with k8s cluster which is having RDS database ? all procedure?
+how can i resolve any issue with application whicn is showing 4** and 5** error tell me the procedure? how can i trobleshoot it?
+how the procedure for deploy and testing app from dev enviromnent to prod how you have manage the different branching strategies?
+how can triger the lamda based on cloud watch metrices?
